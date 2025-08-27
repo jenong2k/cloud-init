@@ -2,6 +2,6 @@
 ---
 # vars file for roles/prometheus
 
-x:
+xxxxx:
   - 10.64.69.0/24
   - 10.64.2.0/24
