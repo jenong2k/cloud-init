@@ -1,0 +1,90 @@
+# {{ template_run_date }}
+
+backends:
+  - address: 1.1.1.1
+    protocol: Do53
+    use_client_subnet: true
+    health_checks:
+      must_resolve: true
+    order: 1
+    # queries_per_second: "{{ range(1,9) | random }}"
+    use_proxy_protocol: true
+
+binds:
+  - listen_address: 127.0.0.1
+    protocol: Do53
+    reuseport: true
+    # threads: {{ ansible_processor_vcpus }}
+
+console:
+  listen_address: 127.0.0.1
+  acl:
+    - 127.0.0.1/32
+  key: {{ lookup('community.general.random_string', base64=True, length=32) }}
+
+webserver:
+  listen_addresses:
+    - 127.0.0.1:8083
+  acl:
+    - 127.0.0.1/32
+  password: {{ lookup('community.general.random_string', base64=True, length=32) }}
+  api_key: {{ lookup('community.general.random_string', base64=True, length=32) }}
+
+logging:
+  verbose: true
+  verbose_health_checks: true
+
+acl:
+  - 127.0.0.1
+
+dynamic_rules:
+  - name: query-rate
+    rules:
+      - type: query-rate
+        seconds: {{ range(1,9) | random }}
+        action_duration: {{ range(1,9) | random }}
+        comment: query-rate
+        rate: {{ range(1,99) | random }}
+
+  - name: rcode-rate nxdomain
+    rules:
+      - type: rcode-rate
+        seconds: 1
+        action_duration: {{ range(1,9) | random }}
+        comment: rcode-rate nxdomain
+        rate: {{ range(1,99) | random }}
+        rcode: 3
+
+query_rules:
+
+  - name: "log all queries"
+    selector:
+      type: All
+    action:
+      type: DnstapLog
+      identity: "{{ ansible_hostname }}-query_rules"
+      logger_name: remote_logging
+
+remote_logging:
+  dnstap_loggers:
+    - name: remote_logging
+      transport: tcp
+      address: "127.0.0.1:6000"
+      connection_count: {{ range(1,5) | random }}
+
+response_rules:
+  - name: log all responses
+    selector:
+      type: All
+    action:
+      type: DnstapLog
+      identity: "{{ ansible_hostname }}-response_rules"
+      logger_name: remote_logging
+
+
+
+load_balancing_policies:
+  # default_policy: firstAvailable
+  # default_policy: leastOutstanding
+
+# {{ template_run_date }}

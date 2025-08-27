@@ -1,0 +1,33 @@
+# SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/dnsdist
+
+- name: Setup dnsdist
+  ansible.builtin.get_url:
+    url: https://repo.powerdns.com/FD380FBB-pub.asc
+    dest: /etc/apt/trusted.gpg.d/
+    mode: "+r"
+  tags: dnsdist
+
+- name: Setup apt
+  ansible.builtin.apt_repository:
+    repo: "deb http://repo.powerdns.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }}-dnsdist-20 main"
+
+  tags: dnsdist
+
+- name: Install dnsdist
+  ansible.builtin.apt:
+    name:
+      - dnsdist
+    state: latest
+    update_cache: true
+  tags: dnsdist
+
+- name: Setup dnsdist
+  ansible.builtin.template:
+    src: dnsdist.yml
+    dest: /etc/dnsdist/
+    mode: "u+rw,g+r,o-rwx"
+    owner: root
+    group: _dnsdist
+  tags: dnsdist
