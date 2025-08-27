@@ -81,8 +81,6 @@ response_rules:
       identity: "{{ ansible_hostname }}-response_rules"
       logger_name: remote_logging
 
-
-
 load_balancing_policies:
   # default_policy: firstAvailable
   # default_policy: leastOutstanding
