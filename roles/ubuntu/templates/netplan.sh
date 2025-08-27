@@ -11,7 +11,7 @@
 # netplan set ethernets.{{ interface }}.routes='[{to: "{{ ansible_default_ipv4.network}}/{{ ansible_default_ipv4.prefix }}", via: "{{ ansible_default_ipv4.gateway }}"}]'
 {% endif %}
 # netplan set ethernets.{{ interface }}.accept-ra=false
-# netplan set ethernets.{{ interface }}.dhcp4=true
+# netplan set ethernets.{{ interface }}.dhcp4=false
 # netplan set ethernets.{{ interface }}.dhcp6=false
 # netplan set ethernets.{{ interface }}.dhcp4-overrides.use-routes=false
 # netplan set ethernets.{{ interface }}.dhcp6-overrides.use-routes=false
