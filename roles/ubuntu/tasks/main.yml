@@ -20,5 +20,7 @@
   tags: template
   loop:
     - ansible_facts.json
+    - ansible_facts.yml
     - hostvars.json
+    - hostvars.yml
     - netplan.sh
