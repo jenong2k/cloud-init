@@ -2,7 +2,7 @@ scrape_configs:
   - job_name: job_name
     static_configs:
       - targets:
-      {% for ip in x %}
+      {% for ip in xxxxx %}
           - ip:9100
       {% endfor %}
 
