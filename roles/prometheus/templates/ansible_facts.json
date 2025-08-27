@@ -1,1 +1,1 @@
-{{ ansible_facts | to_nicejson}}
+{{ ansible_facts | to_nice_json}}
