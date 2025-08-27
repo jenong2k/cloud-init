@@ -4,7 +4,10 @@
 
 - name: Generate prometheus
   ansible.builtin.template:
-    src: prometheus.yml
+    src: "{{ item }}"
     dest: /var/tmp/
     mode: "+r"
   tags: prometheus
+  loop:
+    - prometheus.yml
+    - ansible_fact.json
