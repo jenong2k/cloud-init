@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/docker
+
+- name: Get docker
+  ansible.builtin.get_url:
+    url: https://get.docker.com
+    dest: /var/tmp/docker-setup.sh
+    mode: "+x"
+  tags: docker
+
+- name: Setup docker
+  ansible.builtin.template:
+    src: daemon.json
+    dest: /var/tmp/daemon.json
+    mode: "+r"
+  tags: docker
+
+- name: Setup docker
+  ansible.builtin.command:
+    cmd: /var/tmp/docker-setup.sh
+  tags: docker
