@@ -6,6 +6,7 @@ scrape_configs:
       # {% for x in prometheus_x %}
           
       # {% set y = x | ansible.utils.usable_range %}
-      # x = {{ x }}
-      # y = {{ y }}
+# {% for ip in y['usable_ips'] %}
+# {{ip}}
+# {% endfor %}
       # {% endfor %}
