@@ -3,5 +3,5 @@
 # vars file for roles/prometheus
 
 x:
-  - 10.64.69.0/24 | ansible.utils.usable_range
-  - 10.64.2.0/24 | ansible.utils.usable_range
+  - 10.64.69.0/24
+  - 10.64.2.0/24
