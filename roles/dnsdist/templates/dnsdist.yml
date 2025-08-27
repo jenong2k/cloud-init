@@ -3,12 +3,21 @@
 backends:
   - address: 1.1.1.1
     protocol: Do53
-    use_client_subnet: true
+    # use_client_subnet: true
     health_checks:
       must_resolve: true
     order: 1
     # queries_per_second: "{{ range(1,9) | random }}"
-    use_proxy_protocol: true
+    # use_proxy_protocol: true
+
+  - address: 8.8.8.8
+    protocol: Do53
+    # use_client_subnet: true
+    health_checks:
+      must_resolve: true
+    order: 1
+    # queries_per_second: "{{ range(1,9) | random }}"
+    # use_proxy_protocol: true
 
 binds:
   - listen_address: 127.0.0.1
@@ -32,7 +41,7 @@ webserver:
 
 logging:
   verbose: true
-  verbose_health_checks: true
+  # verbose_health_checks: true
 
 acl:
   - 127.0.0.1
