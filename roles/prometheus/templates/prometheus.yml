@@ -3,10 +3,11 @@ scrape_configs:
     static_configs:
       - targets:
     
-      # {% for x in prometheus_x %}
-          
-      # {% set y = x | ansible.utils.usable_range %}
+# {% for x in prometheus_x %}          
+# {% set y = x | ansible.utils.usable_range %}
 # {% for ip in y['usable_ips'] %}
+
         {{ ip }}:9100
+
 # {% endfor %}
-      # {% endfor %}
+# {% endfor %}
