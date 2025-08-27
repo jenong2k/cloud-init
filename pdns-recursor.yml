@@ -1,7 +1,7 @@
 # ---
-- name: Setup dnsdist
+- name: Setup pdns-recursor
   hosts: 127.0.0.1
   connection: local
   become: true
   roles:
-    - dnsdist
+    - pdns-recursor

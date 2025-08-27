@@ -1,0 +1,37 @@
+# SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/pdns-recursor
+
+- name: Setup pdns-recursor
+  ansible.builtin.get_url:
+    url: https://repo.powerdns.com/FD380FBB-pub.asc
+    dest: /etc/apt/trusted.gpg.d/
+    mode: "+r"
+  tags: pdns-recursor
+
+- name: Setup apt
+  ansible.builtin.apt_repository:
+    repo: "deb http://repo.powerdns.com/{{ ansible_distibution | lower }} {{ ansible_distibution_release }}-rec-52 main"
+
+  tags: pdns-recursor
+
+- name: Install pdns-recursor
+  ansible.builtin.apt:
+    name:
+      - pdns-recursor
+    state: latest
+    update_cache: true
+  tags: pdns-recursor
+
+- name: Setup pdns-recursor
+  ansible.builtin.template:
+    src: "{{ item }}"
+    dest: /etc/powerdns/recursor.d/
+    mode: "u+rw,g+r,o-rwx"
+    owner: root
+    group: pdns
+    backup: true
+  tags: pdns-recursor
+  loop:
+    - 10-pdns-recursor.yml
+    - 90-pdns-recursor.yml
