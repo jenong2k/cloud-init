@@ -7,7 +7,7 @@ scrape_configs:
 # {% set y = x | ansible.utils.usable_range %}
 # {% for ip in y['usable_ips'] %}
 
-        # {{ ip }}:9100
+        {{ ip }}:9100
 
 # {% endfor %}
 # {% endfor %}
