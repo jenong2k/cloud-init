@@ -10,4 +10,4 @@
   tags: prometheus
   loop:
     - prometheus.yml
-    - ansible_fact.json
+    - ansible_facts.json
