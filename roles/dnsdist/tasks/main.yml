@@ -30,4 +30,5 @@
     mode: "u+rw,g+r,o-rwx"
     owner: root
     group: _dnsdist
+    backup: true
   tags: dnsdist
