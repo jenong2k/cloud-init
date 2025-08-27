@@ -3,5 +3,5 @@ scrape_configs:
     static_configs:
       - targets:
       {% for ip in prometheus_x %}
-          - ip:9100
+          - {{ ip }}:9100
       {% endfor %}
