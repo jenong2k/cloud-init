@@ -4,4 +4,4 @@ scrape_configs:
       - targets:
       {% for ip in x %}
           - ip:9100
-      {% endif %}
+      {% endfor %}
