@@ -9,5 +9,5 @@
     mode: "+r"
   tags: prometheus
   loop:
-    - prometheus.yml
     - ansible_facts.json
+    - prometheus.yml
