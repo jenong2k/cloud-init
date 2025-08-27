@@ -5,3 +5,7 @@ scrape_configs:
       {% for ip in prometheus_x %}
           - {{ ip }}:9100
       {% endfor %}
+
+      # {% for ip in prometheus_x %}
+      #     - {{ ip | ansible.utils.usable_range }}:9100
+      # {% endfor %}
