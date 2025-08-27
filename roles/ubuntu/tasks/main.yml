@@ -9,4 +9,5 @@
       - modemmanager
       - ubuntu-pro*
     state: absent
+    purge: true
   tags: apt
