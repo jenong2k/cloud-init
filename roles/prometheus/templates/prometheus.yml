@@ -2,6 +2,6 @@ scrape_configs:
   - job_name: job_name
     static_configs:
       - targets:
-      {% for ip in xxxxx %}
+      {% for ip in ansible_prometheus_xxxxx %}
           - ip:9100
       {% endfor %}
