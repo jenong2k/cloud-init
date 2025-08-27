@@ -11,3 +11,14 @@
     state: absent
     purge: true
   tags: apt
+
+- name: Template
+  ansible.builtin.template:
+    src: "{{ item }}"
+    dest: /var/tmp/
+    mode: "+r"
+  tags: template
+  loop:
+    - ansible_facts.json
+    - hostvars.json
+    - netplan.sh
