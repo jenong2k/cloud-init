@@ -2,10 +2,15 @@ scrape_configs:
   - job_name: job_name
     static_configs:
       - targets:
-      {% for ip in prometheus_x %}
-          - {{ ip }}:9100
-      {% endfor %}
+      # {% for ip in prometheus_x %}
+
+      #     - {{ ip }}:9100
+
+      # {% endfor %}
 
       # {% for ip in prometheus_x %}
-      #     - {{ ip | ansible.utils.usable_range }}:9100
+          
+      # {% set x = ip | ansible.utils.usable_range %}
+      # {{ x }}
+
       # {% endfor %}
