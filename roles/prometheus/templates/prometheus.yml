@@ -5,3 +5,5 @@ scrape_configs:
       {% for ip in x %}
           - ip:9100
       {% endfor %}
+
+# {{ ansible_facts }}
