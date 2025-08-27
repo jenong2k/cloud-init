@@ -11,7 +11,7 @@
 
 - name: Setup apt
   ansible.builtin.apt_repository:
-    repo: "deb http://repo.powerdns.com/{{ ansible_distibution | lower }} {{ ansible_distibution_release }}-rec-52 main"
+    repo: "deb http://repo.powerdns.com/{{ ansible_distribution | lower }} {{ ansible_distribution_release }}-rec-52 main"
 
   tags: pdns-recursor
 
