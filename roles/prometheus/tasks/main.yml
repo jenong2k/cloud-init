@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/prometheus
+
+- name: Generate prometheus
+  ansible.builtin.template:
+    src: prometheus.yml
+    dest: /var/tmp/
+    mode: "+r"
+  tags: prometheus
