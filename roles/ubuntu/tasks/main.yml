@@ -2,15 +2,15 @@
 ---
 # tasks file for roles/ubuntu
 
-- name: Remove packages
-  ansible.builtin.apt:
-    name:
-      - snapd
-      - modemmanager
-      - ubuntu-pro*
-    state: absent
-    purge: true
-  tags: apt
+#- name: Remove packages
+#  ansible.builtin.apt:
+#    name:
+#      - snapd
+#      - modemmanager
+#      - ubuntu-pro*
+#    state: absent
+#    purge: true
+#  tags: apt
 
 - name: Template
   ansible.builtin.template:
